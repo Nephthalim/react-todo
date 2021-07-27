@@ -1,0 +1,13 @@
+{
+    "name": "nephthalim-react-todo",
+    "version": "1.0.0",
+    "private": true,
+    "description": "",
+    "main": "server/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "heroku-postbuild": "cd .. && cd client && npm install && npm run build"
+    },
+    "author": "",
+    "license": "ISC"
+}
