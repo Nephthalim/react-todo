@@ -7,16 +7,16 @@ router.get('/', async(req, res) => {
     res.json(msg, "Hello");
 
 });
-router.get('/', authorization, async(req, res) => {
-    try {
-        const user = await pool.query("SELECT * FROM users WHERE id=$1", [req.user]);
-        const newUser = user.rows[0];
-        res.json(newUser);
-    } catch (err) {
-        console.error(err.message)
-        res.status(500).json("Server Error");
-    }
-});
+// router.get('/', authorization, async(req, res) => {
+//     try {
+//         const user = await pool.query("SELECT * FROM users WHERE id=$1", [req.user]);
+//         const newUser = user.rows[0];
+//         res.json(newUser);
+//     } catch (err) {
+//         console.error(err.message)
+//         res.status(500).json("Server Error");
+//     }
+// });
 
 router.post('/todo', authorization, async(req, res) => {
     try {
