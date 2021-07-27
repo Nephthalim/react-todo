@@ -23,8 +23,8 @@ yarn-debug.log*
 yarn-error.log*
 
 /.env
-/server/.database.sql
-/server/.db.js
-/server/build
-/server/node_modules
-/server/.env
+./server/.database.sql
+./server/.db.js
+./server/build
+./server/node_modules
+./server/.env
