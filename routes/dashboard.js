@@ -3,6 +3,10 @@ const pool = require("../db");
 const authorization = require('../middleware/authorization')
 
 
+router.get('/', async(req, res) => {
+    res.sendFile(path.join(__dirname + '/client/public/index.html'))
+
+});
 router.get('/', authorization, async(req, res) => {
     try {
         const user = await pool.query("SELECT * FROM users WHERE id=$1", [req.user]);
