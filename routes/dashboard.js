@@ -4,7 +4,7 @@ const authorization = require('../middleware/authorization')
 
 
 router.get('/', async(req, res) => {
-    res.sendFile(path.join(__dirname + '/client/public/index.html'))
+    res.json(msg, "Hello");
 
 });
 router.get('/', authorization, async(req, res) => {
