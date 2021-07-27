@@ -24,6 +24,5 @@ yarn-error.log*
 
 /server/.database.sql
 /server/.db.js
-/server/build
 /server/node_modules
 /server/.env
