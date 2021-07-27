@@ -22,8 +22,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-database.sql
-db.js
+database
+db
 /server/build
 /server/node_modules
 /server/.env
