@@ -1,0 +1,36 @@
+.container {
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+    height: 250px;
+    position: relative;
+}
+
+.date {
+    position: absolute;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    vertical-align: bottom;
+}
+
+@media (max-width:750px) {
+    .container {
+        margin: 2.5rem;
+        height: 250px;
+        width: auto;
+    }
+}
+
+.important {
+    padding-top: 2rem;
+    border-top: 0.5rem solid red;
+}
+
+.done {
+    border-top: 0.55rem solid green;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,0 +1,16 @@
+.grid {
+    /* height: 90vh; */
+    /* width: auto; */
+    align-self: center;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 350px);
+    grid-gap: 2rem;
+}
+
+@media (max-width:750px) {
+    .grid {
+        width: auto;
+        display: block;
+    }
+}

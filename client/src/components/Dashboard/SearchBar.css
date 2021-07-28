@@ -1,0 +1,21 @@
+.searchBar {
+    width: 100%;
+    padding: 0;
+    margin: auto 1.25rem;
+    display: flex;
+}
+
+._search-btn {
+    text-decoration: none;
+    border: none;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 0.5% 0;
+    width: 20%;
+}
+
+._search-btn:hover {
+    text-decoration: none;
+    border: none;
+    background-color: rgb(156, 156, 156);
+}
