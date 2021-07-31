@@ -1,0 +1,7 @@
+{
+    "root": "build/",
+    "routes": {
+        "/register/**": "index.html",
+        "/**": "index.html"
+    }
+}

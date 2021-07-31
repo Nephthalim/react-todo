@@ -1,11 +1,11 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { Redirect, useHistory } from 'react-router-dom'
 import RegisterForm from '../components/RegisterForm/RegisterForm'
 
-const RegisterPage = () => {
+const RegisterPage = (setAuthentication) => {
 
     const history = useHistory();
-    const url = "http://localhost:5000"
+    const url = "https://nephthalim-react-todo.herokuapp.com"
 
     const addUser = (user) => {
         fetch(
@@ -15,6 +15,7 @@ const RegisterPage = () => {
                 body: user,
                 headers: {
                     'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
             }
 
@@ -24,12 +25,13 @@ const RegisterPage = () => {
             }
         }).then((data) => {
             localStorage.setItem("token", data.token)
+            setAuthentication(true)
         }).catch((res) => {
             history.replace('/register')
         })
         const token = localStorage.getItem("token")
         if (token !== undefined && token !== "") {
-            history.replace('/')
+            <Redirect to='/' />
         }
     }
 

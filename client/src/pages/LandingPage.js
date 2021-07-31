@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import LoginForm from '../components/LandingPage/LoginForm'
 
@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const LandingPage = ({ setAuthentication, toaster }) => {
-    const url = "http://localhost:5000"
+    const url = "https://nephthalim-react-todo.herokuapp.com"
 
     const loginUser = (user) => {
         fetch(
@@ -15,7 +15,8 @@ const LandingPage = ({ setAuthentication, toaster }) => {
                 method: 'POST',
                 body: user,
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 }
             }
 
@@ -25,16 +26,23 @@ const LandingPage = ({ setAuthentication, toaster }) => {
             else if (res.status === 500) { toaster.error("🙁 Seems like there is a server error ☹️! Try again some other time"); }
         }).then((data) => {
             if (data.token) {
+                console.log(data.token)
                 localStorage.setItem("token", data.token)
+                console.log("================")
+                console.log("Set token")
+                console.log("================")
                 toaster.success();
                 setAuthentication(true);
+                console.log("Set Authentication to true")
             }
 
         }).catch((error) => {
             console.log(error)
         })
     }
-
+    useEffect(() => {
+        console.log("LandingPage.js")
+    }, [])
     return (
         <>
             <h1 className="text-center my-5">Login</h1>

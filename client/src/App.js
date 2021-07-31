@@ -51,16 +51,15 @@ function App() {
           }
         </Route>
         <Route path='/register' exact>
-          {
-            !token ?
-              <RegisterPage /> :
-              <Redirect to='/' />
+
+          {!isAuthenticated ?
+            <RegisterPage setAuthentication={setAuthentication} /> :
+            <Redirect to='/' />
           }
+
+
         </Route>
 
-        <Route path='*'>
-          <Redirect to='/' />
-        </Route>
       </Switch>
       <ToastContainer
         position="bottom-right"

@@ -24,7 +24,7 @@ const RegisterForm = ({addUser}) => {
             <input ref={nameInputRef} type="text" className="form-control my-3" name="name" placeholder="Name" />
             <input ref={emailInputRef} type="email" className="form-control my-3" name="email" placeholder="Email" />
             <input ref={passwordInputRef} type="password" className="form-control my-3" name="password" placeholder="Password" />
-            <input type="submit" className="btn btn-success w-100" onClick={registerUser} />
+            <input type="submit" className="btn btn-primary w-100" onClick={registerUser} />
 
         </form>
     )

@@ -6,7 +6,7 @@ import Backdrop from './Backdrop';
 import Modal from './Modal';
 
 const Todo = ({ key, task, deleteTodo }) => {
-    const url = "http://localhost:5000"
+    const url ="https://nephthalim-react-todo.herokuapp.com"
     const token = localStorage.getItem('token');
     const [important, switchImportant] = useState(false);
     const [_task, setTask] = useState(false);
@@ -26,15 +26,15 @@ const Todo = ({ key, task, deleteTodo }) => {
 
     const markImportant = (id) => {
         const token = localStorage.getItem("token")
-        const url = "http://localhost:5000"
-
 
         fetch(
-            url + "/important/" + id,
+            url + "/todo/important/" + id,
             {
                 method: 'PUT',
                 headers: {
                     'token': token,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
                 }
             }
 

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const pool = require("../db");
 const jwtGenerator = require("../utils/jwtGenerator.js");
 
@@ -45,6 +45,7 @@ router.post('/login', async(req, res) => {
         }
 
         const token = await jwtGenerator(user.rows[0].id)
+        res.setHeader('Content-Type', 'application/json');
         return res.json({ token })
     } catch (err) {
         console.error(err.message);

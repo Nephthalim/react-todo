@@ -11,15 +11,17 @@ const DashboardPage = ({ setAuthentication }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState({ name: "" });
     const token = localStorage.getItem("token")
-    const url = "http://localhost:5000"
+    const url = "https://nephthalim-react-todo.herokuapp.com"
 
     const getUser = () => {
         fetch(
-            url + "/",
+            url + "/todo",
             {
                 method: 'GET',
                 headers: {
                     'token': token,
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
                 }
             }
 
@@ -28,24 +30,26 @@ const DashboardPage = ({ setAuthentication }) => {
             else if (res.status === 403) {
                 localStorage.removeItem('token')
                 setAuthentication(false)
-
             }
-
         }).then((data) => {
             setUser({ name: data.name })
 
         }).catch((err) => {
+            console.log("Here 1")
+            console.log(err)
             localStorage.removeItem('token')
             setAuthentication(false)
         })
     }
     const getTodoList = () => {
         fetch(
-            url + "/todo",
+            url + "/todo/all",
             {
                 method: 'GET',
                 headers: {
                     'token': token,
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 }
             }
         ).then((res) => {
@@ -53,6 +57,8 @@ const DashboardPage = ({ setAuthentication }) => {
         }).then((data) => {
             setTodoList(data.todos)
         }).catch((err) => {
+            console.log("Here 2")
+            console.log(err)
             localStorage.removeItem('token')
             setAuthentication(false)
         })
@@ -67,7 +73,8 @@ const DashboardPage = ({ setAuthentication }) => {
                 method: "GET",
                 headers:
                 {
-                    'Content-Type': "application/json",
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
                     "token": token
                 }
             }).then((res) => {
@@ -85,6 +92,7 @@ const DashboardPage = ({ setAuthentication }) => {
     }
 
     useEffect(() => {
+        console.log("DahsboardPage.js")
         setIsLoading(true);
         getUser();
         getTodoList();

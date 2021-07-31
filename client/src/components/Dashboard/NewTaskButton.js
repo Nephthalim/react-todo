@@ -6,7 +6,7 @@ import Backdrop from './Backdrop';
 
 const NewTaskButton = ({ setTodos, todos }) => {
     const [showAddModal, setShowAddModal] = useState(false);
-    const url = "http://localhost:5000"
+    const url = "https://nephthalim-react-todo.herokuapp.com"
     const token = localStorage.getItem('token');
     const addTask = (newTask) => {
         fetch(
