@@ -11,11 +11,9 @@ const DashboardPage = ({ setAuthentication }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState({ name: "" });
     const token = localStorage.getItem("token")
-    const url = "https://nephthalim-react-todo.herokuapp.com"
 
     const getUser = () => {
-        fetch(
-            url + "/todo",
+        fetch("/todo",
             {
                 method: 'GET',
                 headers: {
@@ -35,15 +33,13 @@ const DashboardPage = ({ setAuthentication }) => {
             setUser({ name: data.name })
 
         }).catch((err) => {
-            console.log("Here 1")
             console.log(err)
             localStorage.removeItem('token')
             setAuthentication(false)
         })
     }
     const getTodoList = () => {
-        fetch(
-            url + "/todo/all",
+        fetch("/todo/all",
             {
                 method: 'GET',
                 headers: {
@@ -57,7 +53,6 @@ const DashboardPage = ({ setAuthentication }) => {
         }).then((data) => {
             setTodoList(data.todos)
         }).catch((err) => {
-            console.log("Here 2")
             console.log(err)
             localStorage.removeItem('token')
             setAuthentication(false)
@@ -66,9 +61,7 @@ const DashboardPage = ({ setAuthentication }) => {
     }
 
     const searchTask = (searchQuery) => {
-        console.log(`Searching ${searchQuery}`)
-        fetch(
-            url + '/search?query=' + searchQuery.query,
+        fetch('/todo/search?query=' + searchQuery.query,
             {
                 method: "GET",
                 headers:
@@ -92,7 +85,6 @@ const DashboardPage = ({ setAuthentication }) => {
     }
 
     useEffect(() => {
-        console.log("DahsboardPage.js")
         setIsLoading(true);
         getUser();
         getTodoList();

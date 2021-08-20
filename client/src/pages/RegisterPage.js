@@ -2,14 +2,14 @@ import React from 'react'
 import { Redirect, useHistory } from 'react-router-dom'
 import RegisterForm from '../components/RegisterForm/RegisterForm'
 
-const RegisterPage = (setAuthentication) => {
+const RegisterPage = ({setAuthentication}) => {
 
     const history = useHistory();
-    const url = "https://nephthalim-react-todo.herokuapp.com"
+    // const url = "https://nephthalim-react-todo.herokuapp.com"
 
     const addUser = (user) => {
         fetch(
-            url + "/auth/register",
+            "/auth/register",
             {
                 method: 'POST',
                 body: user,
@@ -26,13 +26,14 @@ const RegisterPage = (setAuthentication) => {
         }).then((data) => {
             localStorage.setItem("token", data.token)
             setAuthentication(true)
-        }).catch((res) => {
+            
+        }).catch((err) => {
+            console.log("Error")
+            console.log(err)
             history.replace('/register')
         })
-        const token = localStorage.getItem("token")
-        if (token !== undefined && token !== "") {
-            <Redirect to='/' />
-        }
+
+
     }
 
 
